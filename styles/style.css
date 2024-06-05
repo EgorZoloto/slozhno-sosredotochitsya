@@ -2,4 +2,360 @@
 
 .page {
   /* сохраните в разметке и стилях класс page. На его основе работает скрипт. */
+  background-image: var(--bg-image-main);
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-position: center bottom;
+  background-size: cover;
+}
+
+.header {
+  min-height: 100vh;
+  display: grid;
+  grid-template-rows: repeat(3, 1fr);
+}
+
+.header__theme-menu-button {
+  font-size: 18px;
+  background-color: transparent;
+  border-radius: 0;
+  border: 1px solid transparent;
+  color: var(--button-color);
+  padding: 0;
+  text-transform: lowercase;
+  padding: 3.2px 13px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.header__theme-menu-button_active {
+  border-color: var(--button-border-color);
+}
+
+.header__theme-menu-button:hover {
+  border-color: var(--button-border-color_hover);
+}
+
+.header__theme-menu-button:focus {
+  outline: none;
+  border-bottom-color: var(--button-border-color);
+}
+
+.header__theme-menu {
+  display: flex;
+  justify-content: center;
+  padding-block-start: 20px;
+}
+
+.header__theme-menu-list {
+  display: flex;
+  gap: 10px;
+}
+
+.header__title {
+  align-self: center;
+}
+
+.main-title {
+  font-size: clamp(7.5rem, 0.5625rem + 14.4531vw, 9.8125rem);
+  line-height: 0.825;
+  color: var(--main-title-color);
+  text-shadow: 4px 4px 0 var(--main-title-color-shadow);
+}
+
+.header__description {
+  justify-self: end;
+}
+
+.header-description-text {
+  font-size: 18px;
+  line-height: 1.3;
+  width: 100%;
+  max-width: clamp(355px, 47.9vw, 491px);
+  margin-inline-end: 20px;
+  font-weight: bold;
+}
+
+.text-accent {
+  background: var(--accent-color);
+}
+
+.rec {
+  align-items: center;
+  font-size: 18px;
+  line-height: 1;
+  color: var(--accent-color);
+  gap: 10px;
+  position: absolute;
+  right: 11px;
+  top: 24px;
+  display: var(--rec-display);
+}
+
+.rec::after {
+  content: "";
+  display: block;
+  height: 9px;
+  width: 9px;
+  background-color: var(--accent-color);
+  border-radius: 50%;
+  box-shadow: 0px 0px 4px 2px var(--accent-color);
+}
+
+.decorated-zone {
+  --decorated-offset: 20px;
+  position: relative;
+}
+
+.decorated-zone:after,
+.decorated-zone:before {
+  content: "";
+  display: block;
+  position: absolute;
+  height: 25px;
+  width: 25px;
+  border: 1px solid var(--accent-color);
+}
+
+.decorated-zone:after {
+  right: 0;
+  top: var(--decorated-offset);
+  border-left: none;
+  border-bottom: none;
+}
+
+.decorated-zone::before {
+  left: 0;
+  bottom: var(--decorated-offset);
+  border-right: none;
+  border-top: none;
+}
+
+@media screen and (width <= 768px) {  
+  .header__theme-menu {
+    justify-content: end;
+    align-self: end;
+  }
+
+  .header__theme-menu-list {
+    flex-direction: column;
+    margin-inline-end: 20px;
+  }
+
+  .header-description-text {
+    margin-inline: 10px;
+    margin-block-start: 55px;
+  }
+
+  .header__theme-menu {
+    padding-block-start: 0;
+  }
+}
+
+@media screen and (width <= 576px) {
+
+  .header-description-text {
+    max-width: 100%;
+    width: unset;
+  }
+
+  .decorated-zone:after,
+  .decorated-zone:before {
+    --decorated-offset: 10px;
+  }
+  .rec {
+    top: 16px;
+    right: 11px;
+  }
+}
+
+.section-one, 
+.section-two, 
+.section-three {
+  margin-block-end: 80px;
+}
+
+.section-one {
+  display: grid;
+  grid-template-columns: 32% 1fr;
+  gap: 20px;
+}
+
+.section-one div:first-child {
+  grid-row: 1 / 3;
+}
+
+.title, 
+.paragraph-title,
+.paragraph-text  {
+  font-size: 18px;
+  line-height: 1.3;
+}
+
+.title {
+  color: var(--title-color);
+}
+
+.paragraph-title {
+  font-weight: bold;
+  color: var(--paragraph-title-color);
+  margin-block-end: 10px;
+}
+
+.paragraph-text {
+  color: var(--paragraph-text-color);
+}
+
+.section-two {
+  display: grid;
+  grid-template-columns: 32% 1fr 1fr;
+  gap: 20px;
+}
+
+.section-two div:nth-child(2) {
+  grid-column-start: 1;
+}
+
+.section-three {
+  display: grid;
+  grid-template-columns: 32% 1fr;
+  gap: 20px;
+}
+
+.section-three div:first-child {
+  grid-row: 1/ 7;
+}
+
+.reset-margin {
+  margin-block-end: 0;
+}
+
+.text-normal {
+  font-weight: normal;
+}
+
+@media screen and (width <= 1024px) {
+  .section-two {
+    grid-template-columns: 32% 1fr;
+  }
+
+  .section-two .paragraph {
+    grid-column: 1/ -1;
+  }
+}
+
+@media screen and (width <= 768px) {
+  :root {
+    --main-padding-inline: 10px;
+  }
+  .section-one,
+  .section-two,
+  .section-three {
+    grid-template-columns: 1fr;
+    margin-block-end: 50px;
+  }
+
+  .section-three div:first-child {
+    grid-row: unset;
+  }
+}
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  gap: 20px;
+  aspect-ratio: 1 / 1;
+}
+
+.gallery img {
+  width: 100%;
+  object-fit: cover;
+  height: 100%;
+}
+
+.gallery-item {
+  overflow: hidden;
+}
+.gallery .gallery-item:nth-child(1) {
+  grid-column: 1/ 3;
+}
+
+.gallery .gallery-item:nth-child(2) {
+  grid-column-start: 3;
+  grid-row: 1/ 3;
+}
+
+.gallery .gallery-item:nth-child(3) {
+  grid-column-start: 1;
+  grid-row: 2/ 4;
+}
+
+.gallery .gallery-item:nth-child(4) {
+  aspect-ratio:  1/1;
+}
+.gallery .gallery-item:nth-child(5) {
+  grid-column: 2 / 4;
+}
+
+@media screen and (width <= 768px) {
+  .gallery {
+    display: flex;
+    gap: 10px;
+    flex-direction: column;
+  }
+}
+
+.footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.footer-title {
+  font-size: clamp(7.5rem, 0.5625rem + 14.4531vw, 9.8125rem);
+  font-weight: 700;
+  color: var(--main-title-color);
+  text-shadow: 2px 2px 0 var(--main-title-color-shadow);
+}
+
+@media screen and (width <= 768px) {
+
+  .main-title,
+  .footer-title{
+    font-size: clamp(7.25rem, 7.0115rem + 1.0178vw, 7.5rem);
+  }
+}
+
+.link {
+  text-decoration: none;
+  text-shadow: 2px 2px var(--link-shadow);
+  position: relative;
+}
+
+.link:after {
+  content: '';
+  display: block;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 4px;
+  bottom: 1px;
+  border: 1px solid transparent
+}
+
+.link:hover:after {
+  border-bottom-color: var(--paragraph-text-color)
+}
+
+.link:focus {
+  outline: none;
+}
+
+.link:focus:after {
+  border-color: var(--paragraph-text-color);
+  left: -4px;
+  right: -6px;
+  bottom: 0;
 }

@@ -8,8 +8,10 @@
 
 body {
   min-inline-size: 375px;
-  max-inline-size: 1440px;
+  max-inline-size: calc(1440px + calc(var(--main-padding-inline) * 2));
   margin: 0 auto;
+  font-family: var(--font-family-main);
+  padding-inline: var(--main-padding-inline);
 }
 
 h1,
