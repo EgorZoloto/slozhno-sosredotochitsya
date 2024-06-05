@@ -1,1 +1,1 @@
-git@github.com:EgorZoloto/slozhno-sosredotochitsya.git
+https://github.com/EgorZoloto/slozhno-sosredotochitsya.git
